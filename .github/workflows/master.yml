@@ -32,10 +32,10 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./pyspark-apps.tar.gz s3://datalake-actions-deploy/pyspark-apps/pyspark-apps.tar.gz
+      run: aws s3 cp --region ap-northeast-2 ./pyspark-apps.tar.gz s3://datalake-actions-deploy-hhs/pyspark-apps/pyspark-apps.tar.gz
 
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
         --application-name datalake-deploy
         --deployment-group-name spark-deploy
-        --s3-location bucket=datalake-actions-deploy,bundleType=tgz,key=pyspark-apps/pyspark-apps.tar.gz
+        --s3-location bucket=datalake-actions-deploy-hhs,bundleType=tgz,key=pyspark-apps/pyspark-apps.tar.gz
