@@ -26,5 +26,7 @@ result_df = co_df_it.join(em_df_di, on = "company_id", how = "inner")
 result_df.show()
 
 
+co_df_it.unpersist()
+em_df_di.unpersist()
 
-
+time.sleep(600)
