@@ -15,7 +15,7 @@ em_df = spark.read.option("header", "true").option("multiLine","true").schema(sc
 print("company_industris : ",co_df.count())
 print("employee_counts : ", em_df.count())
 
-co_df_it = co_df.filter(co_df.industry == 'IT1Services1and1IT1Consulting')
+co_df_it = co_df.filter(co_df.industry == 'IT Services and IT Consulting')
 em_df_di = em_df.dropDuplicates(["company_id"])
 
 co_df_it.persist()
