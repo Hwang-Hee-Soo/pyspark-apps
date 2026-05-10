@@ -12,8 +12,8 @@ schema2 = "company_id STRING, employee_count INT, follower_count INT, time_recor
 co_df = spark.read.option("header", "true").option("multiLine","true").schema(schema1).csv(path1)
 em_df = spark.read.option("header", "true").option("multiLine","true").schema(schema2).csv(path2)
 
-print(co_df.count())
-print(em_df.count())
+print("company_industris : ",co_df.count())
+print("employee_counts : ", em_df.count())
 
 co_df_it = co_df.filter(co_df.industry == 'IT1Services1and1IT1Consulting')
 em_df_di = em_df.dropDuplicates(["company_id"])
@@ -21,12 +21,17 @@ em_df_di = em_df.dropDuplicates(["company_id"])
 co_df_it.persist()
 em_df_di.persist()
 
+print("IT company_industris : ",co_df_it.count())
+print("Distinct employee_counts : ", em_df_di.count())
+
 result_df = co_df_it.join(em_df_di, on = "company_id", how = "inner")
 
 result_df.show()
 
 
-co_df_it.unpersist()
-em_df_di.unpersist()
 
 time.sleep(600)
+
+
+co_df_it.unpersist()
+em_df_di.unpersist()
