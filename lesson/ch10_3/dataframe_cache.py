@@ -4,8 +4,8 @@ import time
 spark = SparkSession.builder.appName("dataFrame-cache").getOrCreate()
 
 path1 = 'hdfs:///home/spark/sample/linkedin_jobs/companies/company_industries.csv'
-path2 = 'hdfs:///home/spark/sample/linkedin_jobs/companies/employee_counts.csv1'
-
+path2 = 'hdfs:///home/spark/sample/linkedin_jobs/companies/employee_counts.csv'
+                                                            
 schema1 = "company_id STRING, industry STRING"
 schema2 = "company_id STRING, employee_count INT, follower_count INT, time_recorded STRING"
 
