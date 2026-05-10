@@ -36,3 +36,5 @@ result_df = join_df\
             .orderBy("job_count", ascending = False)
 
 result_df.show()
+
+time.sleep(600)
