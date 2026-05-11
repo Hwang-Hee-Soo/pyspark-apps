@@ -30,8 +30,8 @@ kafka_source_df = spark.readStream \
                     "CAST(value AS STRING) AS VALUE"
                 )
 spark.sql('use linkedin')
-postings_df = spark.sql('select * from postings')
-print('postings.show()')
+postings_df = spark.sql('select * from company')
+print('company.show()')
 postings_df.show()
 
 query = kafka_source_df.writeStream \
